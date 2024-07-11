@@ -1,0 +1,32 @@
+/* Estilos para centrar el contenido */
+/*En el código PHP, encontramos un <div> con la clase contenedor*/
+.contenedor {
+    text-align: center; /* Centra el texto dentro del contenedor */
+    margin-top: 50px; /* Agrega un margen superior de 50 píxeles para separar el contenido del borde superior */
+}
+
+/* Estilos para los cuadros de contenido */
+/*En el código PHP, encontramos varios <div> con la clase caja*/
+.caja {
+    border: 2px solid #000; /* Establece un borde sólido de 2 píxeles de ancho y color negro */
+    padding: 20px; /* Agrega un relleno interno de 20 píxeles en todas las direcciones */
+    display: inline-block; /* Convierte los elementos en bloques de línea, permitiendo que se apilen horizontalmente */
+    margin: 10px; /* Agrega un margen de 10 píxeles en todas las direcciones */
+}
+
+/* Estilos para los botones */
+/*En el código PHP, encontramos elementos <input> con la clase boton*/
+.boton {
+    display: inline-block; /* Convierte los elementos en bloques de línea */
+    padding: 10px 20px; /* Agrega un relleno interno de 10 píxeles arriba y abajo, y 20 píxeles a la izquierda y derecha */
+    font-size: 16px; /* Establece el tamaño de fuente en 16 píxeles */
+    cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa por encima del botón */
+    background-color: #4CAF50; /* Establece el color de fondo del botón */
+    color: white; /* Establece el color del texto del botón como blanco */
+    border: none; /* Elimina el borde predeterminado del botón */
+    border-radius: 5px; /* Agrega un radio de borde de 5 píxeles para redondear las esquinas del botón */
+}
+
+.boton:hover {
+    background-color: #45a049; /* Cambia el color de fondo del botón cuando el cursor pasa por encima */
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- 
+INTEGRANTES:
+.Tomas Silvestre Niels Stevens
+.Mendoza Flores Diego Armando
+.Paredes Quispe Lindbergh
+.García Ramón Jesúa Marcelo 
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTP+ Gaming</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- Botón para abrir el modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comentariosModal"
+        style="position: fixed; top: 20px; right: 20px; z-index: 1050;">
+        Deja un Comentario
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="comentariosModal" tabindex="-1" aria-labelledby="comentariosModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog dialogo-modal-arriba-derecha">
+            <div class="modal-content contenido-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="comentariosModalLabel">Formulario de Comentario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formComentarios">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="celular" class="form-label">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sexo" class="form-label">Sexo</label>
+                            <div>
+                                <input type="radio" id="masculino" name="sexo" value="Masculino">
+                                <label for="masculino">Masculino</label>
+                                <input type="radio" id="femenino" name="sexo" value="Femenino">
+                                <label for="femenino">Femenino</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="juegoFavorito" class="form-label">Juego que más te gustó</label>
+                            <select class="form-select" id="juegoFavorito" name="juegoFavorito">
+                                <option selected>Elige uno...</option>
+                                <option value="Rocket Warrior">Rocket Warrior</option>
+                                <option value="Alien War">Alien War</option>
+                                <option value="Rompecabezas">Rompecabezas</option>
+                                <option value="Carta Mayor">Carta Mayor</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipoJuego" class="form-label">Tipo de juego a agregar</label>
+                            <select class="form-select" id="tipoJuego" name="tipoJuego">
+                                <option selected>Elige uno...</option>
+                                <option value="Acción">Acción</option>
+                                <option value="Estrategia">Estrategia</option>
+                                <option value="Aventura">Aventura</option>
+                                <option value="Apuestas">Apuestas</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comentario" class="form-label">Comentarios</label>
+                            <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#formComentarios').submit(function (event) {
+            event.preventDefault(); // Previene el envío normal del formulario
+            var formData = $(this).serialize(); // Serializa los datos del formulario
+
+            $.ajax({
+                type: 'POST',
+                url: 'Comentario.php',
+                data: formData,
+                success: function (response) {
+                    $('#comentariosModal').modal('hide'); // Oculta el modal
+                    alert(response); // Muestra el mensaje de respuesta del servidor
+                },
+                error: function () {
+                    alert('Error al enviar el formulario.');
+                }
+            });
+        });
+    </script>
+
+    <center>
+        <video autoplay loop muted playsinline
+            style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -100; background: no-repeat;">
+            <source src="img/VIDEO-FONDO.mp4" type="video/mp4">
+            Tu navegador no soporta vídeos HTML5.
+        </video>
+
+        <audio id="musicaDeFondo" autoplay loop>
+            <source src="img/MUSICA-FONDO.mp3" type="audio/mp3">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <img src="img/logo_utpgaming.png" alt="Logo" class="logo-esquina">
+
+        <script>
+            var music = document.getElementById("musicaDeFondo");
+            // Alternativa para manejar cuando la reproducción automática es bloqueada
+            document.addEventListener('click', function () {
+                music.play();
+                music.volume = 0.15;
+            });
+        </script>
+
+        <br>
+
+        <h1 class="copperplate">
+            UTP+ Gaming
+        </h1>
+
+        <br>
+
+        <h4 class="copperplate">
+            ¡Bienvenido a UTP+ Gaming!
+        </h4>
+
+        <br>
+
+        <p class="copperplate"> ¿Estás listo para sumergirte en un mundo lleno de emocionantes desafíos, aventuras y
+            entretenimiento?
+            ¡Entonces has llegado al lugar correcto! En nuestra plataforma, encontrarás una amplia variedad de
+            juegos para todos los gustos y edades. Desde juegos de acción hasta rompecabezas cerebrales, tenemos
+            algo para cada jugador.</p><br>
+
+        <div class="contenedor-juegos">
+
+            <!-- Cuadro para Rocket Warrior -->
+            <div class="cuadro">
+                <p class="copperplate">Rocket Warrior</p><br>
+                <img src="img/logo_rocketwarrior.png" alt="Imagen de Rocket Warrior" class="imagen"><br><br>
+                <button class="boton" onclick="window.location.href='html/rocketwarrior.html'">
+                    <img src="img/bt_play.png" height="50" width="150" />
+                </button>
+            </div><br>
+
+            <!-- Cuadro para Alien War -->
+            <div class="cuadro">
+                <p class="copperplate">Alien War</p><br>
+                <img src="img/logo_alienware.png" alt="Imagen de Alien War" class="imagen"><br><br>
+                <button class="boton" onclick="window.location.href='html/alienware.html'">
+                    <img src="img/bt_play.png" height="50" width="150" />
+                </button>
+            </div><br>
+
+            <!-- Cuadro para Rompecabezas -->
+            <div class="cuadro">
+                <p class="copperplate">Rompecabezas</p><br>
+                <img src="img/logo_rompecabezas.png" alt="Imagen de Rompecabezas" class="imagen"><br><br>
+                <button class="boton" onclick="window.location.href='html/rompecabezas.html'">
+                    <img src="img/bt_play.png" height="50" width="150" />
+                </button>
+            </div><br>
+
+            <!-- Cuadro para Adivina el Número -->
+            <div class="cuadro">
+                <p class="copperplate">Adivina el Número</p><br>
+                <img src="img/logo_adivinanumero.png" alt="Imagen de Adivina el Número" class="imagen"><br><br>
+                <button class="boton" onclick="window.location.href='php/adivinanumero.php'">
+                    <img src="img/bt_play.png" height="50" width="150" />
+                </button>
+            </div><br>
+        </div>
+    </center>
+</body>
+
+</html>
